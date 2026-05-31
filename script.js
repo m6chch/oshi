@@ -1,11 +1,9 @@
 document.addEventListener("DOMContentLoaded", () => {
     // キャラクターごとのデータを管理する配列
-    // 今後キャラが増えた場合は、このオブジェクトを後ろに追加するだけで対応可能です
     const oshiList = [
         {
             folder: "miku",
             name: "中野三玖",
-            // 存在する画像ファイル名を正確に配列に格納します
             images: [
                 "miku.jpg",
                 "miku2.jpg",
@@ -14,14 +12,19 @@ document.addEventListener("DOMContentLoaded", () => {
                 "miku5.jpg",
                 "miku6.jpg"
             ],
-            textFile: "miku.txt"
+            textFile: "miku.txt",
+            // ▼ ここにリンクを追加。不要なものは ""（空文字）にするか消してください
+            links: {
+                x: "https://x.com/5Hanayome_anime",
+                youtube: "https://www.youtube.com/@5Hanayome",
+                website: "https://www.tbs.co.jp/anime/5hanayome/"
+            }
         }
     ];
 
     const container = document.getElementById("oshi-container");
 
     oshiList.forEach(oshi => {
-        // キャラクターごとのセクションを作成
         const section = document.createElement("section");
         section.className = "oshi-section";
 
@@ -30,17 +33,58 @@ document.addEventListener("DOMContentLoaded", () => {
         title.textContent = oshi.name;
         section.appendChild(title);
 
+        // ▼ 公式リンクボタンエリアの作成
+        if (oshi.links) {
+            const linksWrapper = document.createElement("div");
+            linksWrapper.className = "oshi-links";
+
+            // X (Twitter) のボタン
+            if (oshi.links.x) {
+                const linkX = document.createElement("a");
+                linkX.href = oshi.links.x;
+                linkX.className = "btn-link btn-x";
+                linkX.textContent = "𝕏 Official";
+                linkX.target = "_blank"; // 別タブで開く
+                linkX.rel = "noopener noreferrer"; // セキュリティ対策
+                linksWrapper.appendChild(linkX);
+            }
+
+            // YouTube のボタン
+            if (oshi.links.youtube) {
+                const linkYt = document.createElement("a");
+                linkYt.href = oshi.links.youtube;
+                linkYt.className = "btn-link btn-youtube";
+                linkYt.textContent = "YouTube";
+                linkYt.target = "_blank";
+                linkYt.rel = "noopener noreferrer";
+                linksWrapper.appendChild(linkYt);
+            }
+
+            // Webサイト のボタン
+            if (oshi.links.website) {
+                const linkWeb = document.createElement("a");
+                linkWeb.href = oshi.links.website;
+                linkWeb.className = "btn-link btn-website";
+                linkWeb.textContent = "Official Site";
+                linkWeb.target = "_blank";
+                linkWeb.rel = "noopener noreferrer";
+                linksWrapper.appendChild(linkWeb);
+            }
+
+            // ボタンが1つでも生成されていればセクションに追加
+            if (linksWrapper.hasChildNodes()) {
+                section.appendChild(linksWrapper);
+            }
+        }
+
         // テキスト表示エリアの作成
         const textWrapper = document.createElement("div");
         textWrapper.className = "oshi-text-wrapper";
         section.appendChild(textWrapper);
 
-        // txtファイルの読み込み（非同期処理）
         fetch(`oshi/${oshi.folder}/${oshi.textFile}`)
             .then(response => {
-                if (!response.ok) {
-                    throw new Error(`Failed to load ${oshi.textFile}`);
-                }
+                if (!response.ok) throw new Error(`Failed to load`);
                 return response.text();
             })
             .then(text => {
@@ -49,8 +93,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 textWrapper.appendChild(pre);
             })
             .catch(error => {
-                console.error(error);
-                textWrapper.innerHTML = `<p class="error-msg">※プロフィールの読み込みに失敗しました。<br>(ローカル環境で直接HTMLを開いているか、パスが間違っている可能性があります)</p>`;
+                textWrapper.innerHTML = `<p class="error-msg">※テキストの読み込みに失敗しました。</p>`;
             });
 
         // 画像ギャラリーエリアの作成
@@ -61,7 +104,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const img = document.createElement("img");
             img.src = `oshi/${oshi.folder}/${imgName}`;
             img.alt = `${oshi.name}の画像`;
-            img.loading = "lazy"; // 読み込み最適化
+            img.loading = "lazy";
             gallery.appendChild(img);
         });
 
