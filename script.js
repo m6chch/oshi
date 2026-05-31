@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
             // ▼ ここにリンクを追加。不要なものは ""（空文字）にするか消してください
             links: {
                 x: "https://x.com/5Hanayome_anime",
-                youtube: "https://www.youtube.com/@5Hanayome",
+                youtube: "",
                 website: "https://www.tbs.co.jp/anime/5hanayome/"
             }
         }
