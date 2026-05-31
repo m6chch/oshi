@@ -1,0 +1,83 @@
+/* 基本スタイルのリセットと共通設定 */
+body {
+    font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+    background-color: #f0f2f5;
+    color: #333333;
+    margin: 0;
+    padding: 20px;
+}
+
+header h1 {
+    text-align: center;
+    color: #4a90e2;
+    margin-bottom: 30px;
+}
+
+#oshi-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* キャラクターセクションのカードデザイン */
+.oshi-section {
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 30px;
+    margin-bottom: 40px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.oshi-section h2 {
+    font-size: 1.5rem;
+    border-left: 5px solid #4a90e2;
+    padding-left: 15px;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+/* テキストエリア（メモ）の装飾 */
+.oshi-text-wrapper {
+    background-color: #fafafa;
+    border: 1px solid #e1e4e8;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 25px;
+}
+
+.oshi-text-wrapper pre {
+    margin: 0;
+    white-space: pre-wrap; /* はみ出さずに自動改行させる */
+    word-wrap: break-word;
+    font-family: inherit;
+    font-size: 1rem;
+    line-height: 1.7;
+}
+
+.error-msg {
+    color: #d9534f;
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+/* 画像ギャラリーのグリッドレイアウト */
+.oshi-gallery {
+    display: grid;
+    /* 画面幅に合わせて、1枚あたり最低200px幅で自動で折り返す設定 */
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 15px;
+}
+
+.oshi-gallery img {
+    width: 100%;
+    height: 250px; /* 高さを統一 */
+    object-fit: cover; /* 縦横比を維持したまま、指定サイズにトリミング（超重要） */
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* マウスホバー時のエフェクト */
+.oshi-gallery img:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
