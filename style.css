@@ -81,3 +81,47 @@ header h1 {
     transform: translateY(-3px);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
+/* =========================================
+   公式リンクボタンのスタイル（ここから追記）
+   ========================================= */
+
+.oshi-links {
+    display: flex;
+    flex-wrap: wrap; /* 画面が狭い場合は折り返す */
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+/* ボタンの共通スタイル */
+.btn-link {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 20px;
+    border-radius: 25px; /* 丸みのあるボタン */
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 0.85rem;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+/* ホバー（マウスを乗せた時）のアニメーション */
+.btn-link:hover {
+    opacity: 0.85;
+    transform: translateY(-2px); /* 少し浮き上がる */
+}
+
+/* 各サービスのブランドカラー */
+.btn-x {
+    background-color: #0f1419; /* Xの黒 */
+}
+
+.btn-youtube {
+    background-color: #ff0000; /* YouTubeの赤 */
+}
+
+.btn-website {
+    background-color: #4a90e2; /* サイト用の青 */
+}
