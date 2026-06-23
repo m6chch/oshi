@@ -19,6 +19,20 @@ document.addEventListener("DOMContentLoaded", () => {
                 youtube: "",
                 website: "https://www.tbs.co.jp/anime/5hanayome/"
             }
+        },
+        {
+            folder: "nekotatsu",
+            name: "猫汰つな",
+            images: [
+                ""
+            ],
+            textFile: "nekotatsu.txt",
+            // ▼ ここにリンクを追加。不要なものは ""（空文字）にするか消してください
+            links: {
+                x: "https://x.com/tsuna_nekota",
+                youtube: "https://www.youtube.com/@tsuna_nekota",
+                website: "https://store.vspo.jp/collections/tsuna-nekota?srsltid=AfmBOorTfWmXTflGYKJrWFq_QvToLIsS3i8w7IscDbobUklmzfOZ5HMg"
+            }
         }
     ];
 
