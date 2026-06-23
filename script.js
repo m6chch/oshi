@@ -24,7 +24,8 @@ document.addEventListener("DOMContentLoaded", () => {
             folder: "nekotatsu",
             name: "猫汰つな",
             images: [
-                ""
+                "nekotatsu.jpg",
+                "nekotatsu2.png"
             ],
             textFile: "nekotatsu.txt",
             // ▼ ここにリンクを追加。不要なものは ""（空文字）にするか消してください
